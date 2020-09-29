@@ -9,8 +9,7 @@ class Email {
  //email del receptor
  var $mailr;
  var $asunto;
-
- var $importe;
+ 
  //mensaje
  var $msn;
  //archivo adjunto
@@ -29,11 +28,10 @@ class Email {
  $this->asunto = $a;
  $this->msn = $ms;
  $this->adjunto = $ad;
- $this->importe = $im;
  }
 
  //método enviar con los parámetros del formulario
- public function enviar($n,$m,$im,$a,$ms,$ad){
+ public function enviar($n,$m,$mr,$a,$ms,$ad){
  //si existe post
  if(isset($_POST)){
 
@@ -49,8 +47,8 @@ class Email {
  //creamos el mensaje
  $contenido = '
  <h2>Nuevo mensaje de: '.$n.'</h2>
- Unidad:<b>'.$a.'</b><br>
- Importe pagado <b>'.$im.'</b><br>
+ Unidad <b>'.$a.'</b><br>
+ Importe pagado <b>'.'</b
  Mensaje: <br><b>'.$ms.'</b><br>
  ';
  //adjuntamos el archivo necesario para enviar los archivos adjuntos
