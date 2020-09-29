@@ -107,12 +107,12 @@
 					<li>
 						<label for="direccion">Direccion</label>
 						<br>
-						<input type="text" id="direccion" name="direccion" placeholder="direccion" required>
+						<input type="text" id="nombre" name="nombre" placeholder="direccion" required>
 					</li>
 					<li>
 						<label for="unidad">Unidad funcional</label>
 						<br>
-						<input type="text" id="unidad" name="unidad" placeholder="unidad" required>
+						<input type="text" id="asunto" name="asunto" placeholder="unidad" required>
 					</li>
 					<li>
 						<label for="unidad">Fecha de pago</label>
