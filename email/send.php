@@ -29,7 +29,7 @@ class Email {
  $this->asunto = $a;
  $this->msn = $ms;
  $this->adjunto = $ad;
- $this->importe = $pl;
+ $this->importe = $im;
  }
 
  //método enviar con los parámetros del formulario
@@ -50,7 +50,7 @@ class Email {
  $contenido = '
  <h2>Nuevo mensaje de: '.$n.'</h2>
  Unidad <b>'.$a.'</b><br>
- Importe pagado <b>'.$pl.'</b><br>
+ Importe pagado <b>'.$im.'</b><br>
  Mensaje: <br><b>'.$ms.'</b><br>
  ';
  //adjuntamos el archivo necesario para enviar los archivos adjuntos
