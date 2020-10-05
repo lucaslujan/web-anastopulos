@@ -87,66 +87,48 @@
 </head>
 <body>
 	<div id="container">
-		<h1>Envio de emails con archivos adjuntos - <a href="http://www.webcamp.es">Webcamp.es</a></h1>
-		<?php
-			//si se ha enviado el correo
-			if(isset($_REQUEST['s'])){
-				$ok = $_REQUEST['s'];
-				if($ok == 'si'){
-					echo "<div class='msn-ok'>¡Mensaje enviado correctamente!</div>";
-				}
-				elseif($ok == 'no'){
-					echo "<div class='msn-ko'>Ha habido un error de envio...</div>";
-				}
-			}
-		?>
-		<form action="send.php" method="post" enctype="multipart/form-data">
-			<fieldset>
-				<legend>rellena el formulario</legend>
-				<ul>
-					<li>
-						<label for="direccion">Direccion</label>
+	 <h1>Envio de emails con archivos adjuntos - <a href="http://www.webcamp.es">Webcamp.es</a></h1>
+		 <form action="send.php" method="post" enctype="multipart/form-data">
+		 <fieldset>
+		 <legend>rellena el formulario</legend>
+			 <ul>
+				 <li>
+					 <label for="nombre">Direccion:</label>
+					 <br>
+					 <input type="text" id="nombre" name="nombre" placeholder="Direccion del consorcio" required>
+					 </li>
+					 <li>
+						<label for="mail">Mail:</label>
 						<br>
-						<input type="text" id="nombre" name="nombre" placeholder="direccion" required>
-					</li>
-					<li>
-						<label for="unidad">Unidad funcional</label>
-						<br>
-						<input type="text" id="asunto" name="asunto" placeholder="unidad" required>
-					</li>
-					<li>
-						<label for="unidad">Fecha de pago</label>
-						<br>
-						<input type="date" id="fecha" name="fecha" placeholder="fecha de pago" required>
-					</li>
-					<li>
-						<label for="unidad">Importe</label>
-						<br>
-						<input type="text" id="importe" name="importe" placeholder="importe" required>
-					</li>
-					<li>
-					<li>
-						<label for="mail">E-mail:</label>
-						<br>
-						<input type="email" id="mail" name="email" placeholder="E-mail del emisor" required>
-					</li>
-					<li>
-						<label for="msn">Informacion adicional</label>
-						<br>
-						<textarea name="msn" id="msn" rows="10" required></textarea>
-					</li>
-					<li>
-						<label for="adjunto">Archivo adjunto</label>
-						<br>
-						<input type="file" id="adjunto" name="adjunto" required>
-					</li>
-					<li>
-						<input type="submit" value="Enviar">
-					</li>
-				</ul>
-			</fieldset>
-		</form>
-	</div>
+						<input type="mail" id="mail" name="email" placeholder="mail" required>
+						</li>
+				 <li>
+					 <label for="asunto">Unidad funcional/departamento:</label>
+					 <br>
+					 <input type="text" id="asunto" name="asunto" placeholder="Unidad funcional/departamento" required>
+				 </li>
+				 <li>
+					 <label for="importe">Importe:</label>
+					 <br>
+					 <input type="text" id="importe" name="importe" placeholder="Importe" required>
+				 </li>
+				 <li>
+					 <label for="adjunto">Archivo adjunto</label>
+					 <br>
+					 <input type="file" id="adjunto" name="adjunto" required>
+				 </li>
+				 <li>
+					 <label for="msn">Información adicional:</label>
+					 <br>
+					 <textarea name="msn" id="msn" rows="10" required></textarea>
+				 </li>
+				 <li>
+				 		<input type="submit" value="Enviar">
+				 </li>
+			 </ul>
+		 </fieldset>
+		 </form>
+	 </div>
 
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
