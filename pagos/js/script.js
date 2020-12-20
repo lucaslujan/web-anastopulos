@@ -32,7 +32,7 @@
 			case 'input':
 				return element.getAttribute('type').toLowerCase() === "file" ? element.files[0] : element.value;
 				// No hace falta break; (se ha acabado la funcion)
-			case 'select': 
+			case 'select':
 				return element.options[element.selectedIndex].value;
 			case 'textarea':
 			default:
@@ -57,7 +57,7 @@
 		// Expresión regular para validar el email (http://stackoverflow.com/questions/46155/validate-email-address-in-javascript)
 		// Yo había hecho una propia, pero no estoy en mi ordenador, y esta parece funcionar bien
 		var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-		
+
 		return regex.test(valor);
 	}
 	function estaVacio(valor){
@@ -81,9 +81,6 @@
 		// comprobamos errores (prefiero mostrarlos normalmente quitando el required)
 		if( estaVacio(valores.nombre)){
 			errores.push(window.ec_form_messages.error.nombre);
-		}
-		if( ! emailVerification(valores.email)){
-			errores.push(window.ec_form_messages.error.email);
 		}
 		if( estaVacio(valores.mensaje) ){
 			errores.push(window.ec_form_messages.error.mensaje);
@@ -115,7 +112,7 @@
 		}
 
 		enviarform(valores, hasFile);
-		
+
 		e.preventDefault();
 
 		return false;
@@ -159,8 +156,9 @@
 		Si no está javascript activado y es un navegador moderno, el navegador comprobará los campos por nosotros
 		Si sí lo está, prefiero comprobarlos y mostrar los errores en conjunto.
 	*/
-	elements.nombre.required = elements.email.required = elements.mensaje.required = false;
-	elements.email.type = "text";
+	elements.unidad.required = elements.fecha.required = elements.direccion.required = elements.mensaje.required = false;
+	elements.importe.required = "number";
+
 
 	// Añadimos el evento cuando el formulario va a ser enviado
 	form.addEventListener ? form.addEventListener('submit', onsubmit, false): form.attachEvent('onsubmit', onsubmit)

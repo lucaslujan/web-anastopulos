@@ -3,15 +3,15 @@
 	//-------------------------------------------------------------------
 	// VARIABLES DEL MENSAJE
 	$mensaje = preg_replace('/\n/','<br>',htmlspecialchars(urldecode($_POST['mensaje'])));
-	$nombre = urldecode($_POST['nombre']);
-	$email = urldecode($_POST['email']);
-	$asunto = urldecode($_POST['asunto']);
+	$importe = urldecode($_POST['importe']);
+	//$email = urldecode($_POST['email']);
+	//$asunto = urldecode($_POST['asunto']);
 	$direccion = urldecode($_POST['direccion']);
 	$unidad = urldecode ($_POST['unidad']);
-	$fecha = date('c');
+	$fecha = ($_POST['fecha']);
 
 	// Título del mensaje
-	$titulo = "Nuevo mensaje de $nombre desde pagos de Administración Anastópulos";
+	$titulo = "Nuevo pago de $direccion para Administración Anastópulos";
 
 	// El cuerpo del mensaje
 	$data = "";
@@ -43,30 +43,40 @@
 
 	/*
 	 * Comprobaciones de los campos requeridos
-	 */
-	if( ! filter_var($email, FILTER_VALIDATE_EMAIL) )
-		$errores[] = $mensajes_error['email'];
+	//  */
+	// if( ! filter_var($email, FILTER_VALIDATE_EMAIL) )
+	// 	$errores[] = $mensajes_error['email'];
 
 	if( ! isset($_POST['mensaje']) )
 		$errores[] = $mensajes_error['mensaje'];
 
-	if( ! isset($_POST['nombre']) )
-		$errores[] = $mensajes_error['nombre'];
+	if( ! isset($_POST['importe']) )
+		$errores[] = $mensajes_error['importe'];
+
+	if( ! isset($_POST['unidad']) )
+		$errores[] = $mensajes_error['unidad'];
+
+	if( ! isset($_POST['direccion']) )
+		$errores[] = $mensajes_error['direccion'];
+
+	if( ! isset($_POST['fecha']) )
+		$errores[] = $mensajes_error['fecha'];
+
 
 	// El mensaje HTML
 	$data .= "<div class='mensaje'>
-			<h1>Nuevo mensaje de $nombre</h1>
-			<p><strong>Fecha:</strong> $fecha</p>
-			<p><strong>Asunto:</strong> $asunto</p>
-			<p><strong>Unidad funcional/departamento</strong> $unidad</p>
+			<h1>Nuevo mensaje de $direccion</h1>
 			<p><strong>Dirección del consorcio:</strong> $direccion</p>
+			<p><strong>Unidad funcional/departamento</strong> $unidad</p>
+			<p><strong>Importe pagado:</strong> $importe</p>
+			<p><strong>Fecha de pago</strong> $fecha</p>
 			<p><strong>Mensaje:</strong><br>$mensaje</p>
-			<p><strong>Email:</strong> <a href='mailto:$email'>$email</a></p>
+
 		</div>";
 
 	// Las cabeceras empiezan igual
 	$cabeceras = "MIME-Version: 1.0\r\n";
-	$cabeceras .= "From: $nombre<$email>\r\n";
+	$cabeceras .= "From: $direccion<$email>\r\n";
 	$cabeceras .= "To: $receptor\r\n";
 
 	// Si no hay errores probamos a enviar el archivo
@@ -98,7 +108,7 @@
 		}
 
 		// Enviamos nuestro email y damos cuenta sy hay algún error
-		if(mail($receptor, $titulo, $data, $cabeceras, '-f yosoy@emiliocobos.net')) {
+		if(mail($receptor, $titulo, $data, $cabeceras, '-f pagos@admanasto.com.ar')) {
 			// Si no hay ningún error, lo indicamos con null
 			$errores = null;
 		} else {
