@@ -78,5 +78,5 @@ var $importe;
 //llamamos a la clase
 $obj = new Email();
 //ejecutamos el método enviar con los parámetros que recibimos del formulario
-$obj->enviar($_POST['nombre'], $_POST['email'], "lucasmlujan@gmail.com", $_POST['asunto'], $_POST['msn'], $_FILES['adjunto']['name'], $_POST['importe']);
+$obj->enviar($_POST['nombre'], $_POST['email'], "info@admanasto.com.ar", $_POST['asunto'], $_POST['msn'], $_FILES['adjunto']['name'], $_POST['importe']);
 ?>
